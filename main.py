@@ -14,12 +14,12 @@ width = 600
 height = 400
 
 dis = pygame.display.set_mode((width, height))
-pygame.display.set_caption('Snake Game by ChatGPT')
+pygame.display.set_caption('snake game')
 
 clock = pygame.time.Clock()
 
 snake_block = 10
-snake_speed = 15
+snake_speed = 20
 
 font_style = pygame.font.SysFont("bahnschrift", 25)
 score_font = pygame.font.SysFont("comicsansms", 35)
@@ -43,7 +43,7 @@ def gameLoop():
     x1 = width / 2
     y1 = height / 2
 
-    x1_change = 0
+    x1_change = snake_block
     y1_change = 0
 
     snake_List = []
@@ -72,16 +72,16 @@ def gameLoop():
             if event.type == pygame.QUIT:
                 game_over = True
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
+                if event.key == pygame.K_LEFT and x1_change == 0:
                     x1_change = -snake_block
                     y1_change = 0
-                elif event.key == pygame.K_RIGHT:
+                elif event.key == pygame.K_RIGHT and x1_change == 0:
                     x1_change = snake_block
                     y1_change = 0
-                elif event.key == pygame.K_UP:
+                elif event.key == pygame.K_UP and y1_change == 0:
                     y1_change = -snake_block
                     x1_change = 0
-                elif event.key == pygame.K_DOWN:
+                elif event.key == pygame.K_DOWN and y1_change == 0:
                     y1_change = snake_block
                     x1_change = 0
 
